@@ -3,9 +3,9 @@ import sys
 import pickle
 import numpy as np
 import mediapipe as mp
-from angle import combJointAngle
-from landmark import extractLandmarks
-from jointRotations import JOINT_ROTATIONS
+from Angle import combJointAngle
+from Landmark import extractLandmarks
+from JointRotations import JOINT_ROTATIONS
 from Angle3D import Angle
 
 realTime = False
@@ -106,8 +106,8 @@ while True:
         
 
 # save the dictionary into a file
-with open('dictLandmarks.pickle', 'wb') as handle:
-    pickle.dump(dictionary, handle, protocol=pickle.HIGHEST_PROTOCOL)
+# with open('data/dictLandmarks.pickle', 'wb') as handle:
+#     pickle.dump(dictionary, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
 pose.close()
 cap.release()

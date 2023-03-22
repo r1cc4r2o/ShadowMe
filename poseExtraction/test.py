@@ -6,10 +6,25 @@ mp_drawing = mp.solutions.drawing_utils
 mp_pose = mp.solutions.pose
 
 # Define a function to calculate the angle between three points
+'''
 def calculate_angle(a,b,c):
-  a = np.array(a) # First point
-  b = np.array(b) # Mid point
-  c = np.array(c) # End point
+  a = np.array(a) 
+  b = np.array(b) 
+  c = np.array(c) 
+  
+  radians = np.arctan2(c[1]-b[1], c[0]-b[0]) - np.arctan2(a[1]-b[1], a[0]-b[0])
+  angle = np.abs(radians*180.0/np.pi)
+  
+  if angle >180.0:
+    angle = 360-angle
+    
+  return angle
+'''
+
+def calculate_angle(a,b,c):
+  a = np.array(a) 
+  b = np.array(b) 
+  c = np.array(c) 
   
   radians = np.arctan2(c[1]-b[1], c[0]-b[0]) - np.arctan2(a[1]-b[1], a[0]-b[0])
   angle = np.abs(radians*180.0/np.pi)
@@ -19,8 +34,9 @@ def calculate_angle(a,b,c):
     
   return angle
 
+
 # Create a video capture object
-cap = cv2.VideoCapture('/Users/marco/Documents/Computer Vision/PoseEstimationTo3Drender/poseExtraction/data/test2.mp4')
+cap = cv2.VideoCapture('/Users/riccardotedoldi/Desktop/ais/I/sem2/cv/project/PoseEstimationTo3Drender/poseExtraction/data/test2.mp4')
 
 # Initialize the pose model
 with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as pose:
@@ -39,7 +55,7 @@ with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as 
     
     try:
       # Extract landmarks
-      landmarks = results.pose_landmarks.landmark
+      landmarks = results.pose_world_landmarks.landmark
       
       # Get coordinates of the right leg and waist landmarks 
       right_hip_x, right_hip_y = int(landmarks[mp_pose.PoseLandmark.RIGHT_HIP.value].x * image.shape[1]), int(landmarks[mp_pose.PoseLandmark.RIGHT_HIP.value].y * image.shape[0])
@@ -61,11 +77,11 @@ with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as 
       # Visualize the angles
       cv2.putText(image, str(angle_right_leg_waist), 
                    tuple(np.multiply((right_knee_x,right_knee_y), 1).astype(int)), 
-                   cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
+                   cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0), 2)
       
       cv2.putText(image, str(angle_left_leg_waist), 
                    tuple(np.multiply((left_knee_x,left_knee_y), 1).astype(int)), 
-                   cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
+                   cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0), 2)
       
     except:
       pass
