@@ -6,8 +6,9 @@ import mediapipe as mp
 from angle import combJointAngle
 from landmark import extractLandmarks
 from jointRotations import JOINT_ROTATIONS
+from Angle3D import Angle
 
-
+realTime = False
 
 # initialize
 mp_drawing = mp.solutions.drawing_utils
@@ -18,7 +19,10 @@ frm = 0 # index of the current frame
 
 pose = mp_pose.Pose(min_detection_confidence=0.6, min_tracking_confidence=0.6)
 
-cap = cv2.VideoCapture(sys.argv[1])
+if realTime:
+    cap = cv2.VideoCapture(1)
+else:
+    cap = cv2.VideoCapture(sys.argv[1])
 
 if cap.isOpened() == False:
     print("No file available with this name")
@@ -33,9 +37,12 @@ outdir, inputfilename = sys.argv[1][:sys.argv[1].rfind('/')+1], sys.argv[1][sys.
 filename, extension = inputfilename.split('.')
 
 out_filename = f'{outdir}{filename}_annotated.{extension}'
-out = cv2.VideoWriter(out_filename, cv2.VideoWriter_fourcc('m', 'p', '4', 'v'), 10, (frame_width, frame_height))
+out = cv2.VideoWriter(out_filename, cv2.VideoWriter_fourcc('m', 'p', '4', 'v'), 24, (frame_width, frame_height))
 
-while cap.isOpened():
+while True:
+    if not realTime and not cap.isOpened():
+        break
+
     # initialize
     ret, image = cap.read()
     if not ret:
@@ -58,6 +65,26 @@ while cap.isOpened():
     dictionary['coordsFrame_'+str(frm)] = extractLandmarks(mp_pose, results)
     # compute the angle between the joints
     dictionary['angleFrame_'+str(frm)] = combJointAngle(dictionary['coordsFrame_'+str(frm)], JOINT_ROTATIONS)
+
+    # dictionary['coordsFrame_'+str(frm)] = {}
+    dictionary['angleFrame_'+str(frm)] = {}
+    i = 0
+    for joints in JOINT_ROTATIONS:
+        positions = dictionary['coordsFrame_'+str(frm)]
+        point_a = (positions[joints[0]].x, positions[joints[0]].y, positions[joints[0]].z)
+        point_b = (positions[joints[1]].x, positions[joints[1]].y, positions[joints[1]].z)
+        point_c = (positions[joints[2]].x, positions[joints[2]].y, positions[joints[2]].z)
+        angle = Angle(point_a, point_b, point_c)
+        i += 1
+        cv2.putText(image, 
+                    f'{joints} | {angle.compute()[0]}, {angle.compute()[1]}, {angle.compute()[2]}', 
+                    (50, 50 + 55*i), 
+                    cv2.FONT_HERSHEY_SIMPLEX, 1, 
+                    (0, 0, 0), 
+                    2, 
+                    cv2.LINE_4)
+
+        dictionary['angleFrame_'+str(frm)][f'({joints[0]}, {joints[1]}, {joints[2]})'] = angle.compute()
     
     frm = frm + 1 # next frame
 
@@ -68,8 +95,15 @@ while cap.isOpened():
                                 mp_drawing.DrawingSpec(color=(245,117,66), thickness=2, circle_radius=2), # the joint
                                 mp_drawing.DrawingSpec(color=(245,66,230), thickness=2, circle_radius=2)  # the connection
                                 )
-    
+
     out.write(image)
+
+    if realTime:
+        cv2.imshow('frame', image)
+
+        if cv2.waitKey(1) == ord('q'):
+            break
+        
 
 # save the dictionary into a file
 with open('dictLandmarks.pickle', 'wb') as handle:

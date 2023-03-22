@@ -29,8 +29,10 @@ class Angle():
         radians = np.arctan2(point_c[1] - point_b[1], point_c[0] - point_b[0]) - np.arctan2(point_a[1] - point_b[1], point_a[0] - point_b[0])
         angle = np.rad2deg(radians)
 
+        angle = abs(angle)
         if angle > 180.0:
             angle = 360 - angle
+        # return angle % 180.0
         
         return angle
 
