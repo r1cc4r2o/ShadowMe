@@ -38,9 +38,9 @@ class Angle():
     """
     
     def computeAngle(self, plane):
-        point_a = self.point_a * plane
-        point_b = self.point_b * plane
-        point_c = self.point_c * plane
+        # point_a = self.point_a * plane
+        # point_b = self.point_b * plane
+        # point_c = self.point_c * plane
 
         # Compute the angle of 2D vectors
         
@@ -49,24 +49,28 @@ class Angle():
         # radians = np.arctan2(point_c[1] - point_b[1], point_c[0] - point_b[0]) - np.arctan2(point_a[1] - point_b[1], point_a[0] - point_b[0])
         # angle = np.rad2deg(radians)
         
+        point_a = self.point_a * plane
+        point_b = self.point_b * plane
+        point_c = self.point_c * plane
+        
         # source: https://stackoverflow.com/questions/1211212/how-to-calculate-an-angle-from-three-points
         # a•b = (ax bx, ay by, az bz)
-        a_dot_b = [Va*Vb for Va, Vb in zip(point_a, point_b)]
+        a_dot_b = [Va-Vb for Va, Vb in zip(point_a, point_b)]
         # b•c = (bx cx,  by cy,  bz cz)
-        b_dot_c = [Vb*Vc for Vb, Vc in zip(point_b, point_c)]
+        b_dot_c = [Vb-Vc for Vb, Vc in zip(point_b, point_c)]
         # ab•bc = abx*bcx + aby*bcy + abz*bcz 
         ab_dot_bc = np.array([ab*bc for ab, bc in zip(a_dot_b, b_dot_c)]).sum()
         # |ab|•|bc|
         norm_a_dot_b = np.sqrt(np.array([Vab**2 for Vab in a_dot_b]).sum()) * np.sqrt(np.array([Vbc**2 for Vbc in b_dot_c]).sum()) 
-        # angle = arccos(a•b / |a|•|b|)
+        # angle = arccos(ab•bc / |ab|•|bc|)
         angle = np.rad2deg(np.arccos(ab_dot_bc/norm_a_dot_b))
 
         angle = abs(angle)
         if angle > 180.0:
             angle = 360 - angle
-        # return angle % 180.0
-        
         return angle
+        # return angle % 360.0
+        
     
     def compute(self):
         """
