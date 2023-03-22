@@ -106,8 +106,8 @@ while True:
         
 
 # save the dictionary into a file
-# with open('data/dictLandmarks.pickle', 'wb') as handle:
-#     pickle.dump(dictionary, handle, protocol=pickle.HIGHEST_PROTOCOL)
+with open('/Users/riccardotedoldi/Desktop/ais/I/sem2/cv/project/PoseEstimationTo3Drender/poseExtraction/data/dictLandmarks.pickle', 'wb') as handle:
+    pickle.dump(dictionary, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
 pose.close()
 cap.release()
