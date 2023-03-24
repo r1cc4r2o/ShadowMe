@@ -64,17 +64,23 @@ while True:
     # 2: save dict coords current frame
     dictionary['coordsFrame_'+str(frm)] = extractLandmarks(mp_pose, results)
     # compute the angle between the joints
-    dictionary['angleFrame_'+str(frm)] = combJointAngle(dictionary['coordsFrame_'+str(frm)], JOINT_ROTATIONS)
+    #dictionary['angleFrame_'+str(frm)] = combJointAngle(dictionary['coordsFrame_'+str(frm)], JOINT_ROTATIONS)
 
     # dictionary['coordsFrame_'+str(frm)] = {}
     dictionary['angleFrame_'+str(frm)] = {}
     i = 0
     for joints in JOINT_ROTATIONS:
         positions = dictionary['coordsFrame_'+str(frm)]
+        # point_a = (positions[joints[0]].x, positions[joints[0]].y, positions[joints[0]].z)
+        # point_b = (positions[joints[1]].x, positions[joints[1]].y, positions[joints[1]].z)
+        # point_c = (positions[joints[2]].x, positions[joints[2]].y, positions[joints[2]].z)
         point_a = (positions[joints[0]].x, positions[joints[0]].y, positions[joints[0]].z)
         point_b = (positions[joints[1]].x, positions[joints[1]].y, positions[joints[1]].z)
-        point_c = (positions[joints[2]].x, positions[joints[2]].y, positions[joints[2]].z)
-        angle = Angle(point_a, point_b, point_c)
+        # point_c = (positions[joints[2]].x, positions[joints[2]].y, positions[joints[2]].z)
+        
+        # angle = Angle(point_a, point_b, point_c)
+        
+        angle = Angle(point_a, point_b)
         i += 1
         cv2.putText(image, 
                     f'{joints} | {angle.compute()[0]}, {angle.compute()[1]}, {angle.compute()[2]}', 
@@ -84,7 +90,8 @@ while True:
                     2, 
                     cv2.LINE_4)
 
-        dictionary['angleFrame_'+str(frm)][f'({joints[0]}, {joints[1]}, {joints[2]})'] = angle.compute()
+        #dictionary['angleFrame_'+str(frm)][f'({joints[0]}, {joints[1]}, {joints[2]})'] = angle.compute()
+        dictionary['angleFrame_'+str(frm)][f'({joints[0]}, {joints[1]})'] = angle.compute()
     
     frm = frm + 1 # next frame
 

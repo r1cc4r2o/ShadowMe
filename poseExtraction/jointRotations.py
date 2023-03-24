@@ -61,9 +61,16 @@
 #                     (25,27,31),
 #                     (25,27,29)]
 
-JOINT_ROTATIONS = [
+'''JOINT_ROTATIONS = [
     #(11, 13, 23), # Left shoulder
     #(12, 14, 24), # Right shoulder
     (13, 11, 23), # Left shoulder
     (14, 12, 24), # Right shoulder
+]'''
+
+JOINT_ROTATIONS = [
+    #(11, 13, 23), # Left shoulder
+    #(12, 14, 24), # Right shoulder
+    (11, 13), # Left shoulder
+    (12, 14), # Right shoulder
 ]
