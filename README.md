@@ -41,6 +41,8 @@ To run real-time `ShadowMe` on your camera, execute the following command.
 ```
 
 ## Contributing
+
+We have made our implementation publicly available, and we welcome anyone who would like to join us and contribute to the project.
 ### Contact
 If you have suggestions or ideas for further improvemets please contact us.
 - riccardo tedoldi: [@riccardotedoldi](https://www.instagram.com/riccardotedoldi/)
@@ -49,7 +51,7 @@ If you have suggestions or ideas for further improvemets please contact us.
 Also, if you find any bugs or issues, please let us know. We are happy to fix them!
 
 ## License
-Which license is it under?
+
 
 ### To cite our work
 ```bibtex
