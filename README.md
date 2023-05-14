@@ -51,8 +51,9 @@ If you have suggestions or ideas for further improvemets please contact us.
 Also, if you find any bugs or issues, please let us know. We are happy to fix them!
 
 ## License
+The repo is under the licence CC BY-NC-ND, we allows others to use, distribute, and modify the work for non-commercial purposes only, as long as they give credit to the creators.
 
-
+> *CC BY-NC: Creative Commons Attribution-NonCommercial-NoDerivatives* 
 ### To cite our work
 ```bibtex
 @misc{GarosiTedoldi2022,
