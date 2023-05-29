@@ -1,7 +1,7 @@
 # ShadowMe
 
 ### Pipeline
-![pipeline](poseExtraction/img/pipeline.svg)
+![pipeline](poseExtraction/img/pipeline.png)
 
 
 
