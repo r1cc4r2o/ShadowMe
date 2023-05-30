@@ -1,0 +1,36 @@
+{
+	"name": "pose-to-character",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview"
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-auto": "^2.0.0",
+		"@sveltejs/kit": "^1.5.0",
+		"autoprefixer": "^10.4.14",
+		"postcss": "^8.4.21",
+		"svelte": "^3.54.0",
+		"tailwindcss": "^3.3.1",
+		"vite": "^4.2.0",
+		"vite-plugin-mkcert": "^1.14.0"
+	},
+	"type": "module",
+	"dependencies": {
+		"@mediapipe/camera_utils": "^0.3.1675466862",
+		"@mediapipe/control_utils": "^0.6.1675466023",
+		"@mediapipe/drawing_utils": "^0.3.1675466124",
+		"@mediapipe/face_detection": "^0.4.1646425229",
+		"@mediapipe/face_mesh": "^0.4.1633559619",
+		"@mediapipe/hands": "^0.4.1675469240",
+		"@mediapipe/holistic": "^0.5.1635989137",
+		"@mediapipe/pose": "^0.5.1675469404",
+		"@pixiv/three-vrm": "^0.6.7",
+		"@pixiv/types-vrm-0.0": "^1.0.0",
+		"@pixiv/types-vrmc-vrm-1.0": "^1.0.0",
+		"kalidokit": "^1.1.5",
+		"three": "^0.133.0"
+	}
+}
