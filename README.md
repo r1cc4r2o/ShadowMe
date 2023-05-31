@@ -84,6 +84,6 @@ The repo is under the licence CC BY-NC-ND, we allows others to use, distribute, 
     title   = {Shadow Me: Low-power 2D Motion Emulation and 3D Renders},
     author  = {Marco Garosi, Riccardo Tedoldi, Giulia Martinelli},
     year    = {2023},
-    url  = {https://github.com/r1cc4r2o/PoseEstimationTo3Drender}
+    url  = {https://github.com/r1cc4r2o/ShadowMe}
 }
 ```
