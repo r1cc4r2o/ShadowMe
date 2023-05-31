@@ -59,9 +59,9 @@ npm run dev
 
 It would be possiple to run the pipeline on both:
 
-+ To run `ShadowMe` on a 2D video, execute the following command.
++ on a 2D single RGB video
 
-+ To run real-time `ShadowMe` on your camera, execute the following command.
++ on real-time 2D single RGB camera
 
 
 ## Contributing
