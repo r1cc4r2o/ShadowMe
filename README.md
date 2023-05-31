@@ -1,44 +1,66 @@
 # ShadowMe
-
 ### Pipeline
+---
 ![pipeline](poseExtraction/img/pipeline.png)
 
-
-
-> [**Shadow Me: Low-power 2D Motion Emulation and 3D Renders**](https://github.com/404/),            
+> [**Shadow Me: Low-power 2D Motion Emulation and 3D Renders**](https://drive.google.com/file/d/1gKofOmoEIEHP3fCCUfxvfmKZdTAw6TfP),            
 > [Marco Garosi](https://www.instagram.com/marco_garosi/), [Riccardo Tedoldi](https://www.instagram.com/riccardotedoldi/)
 >
 > Supervisor: [Giulia Martinelli](https://www4.unitn.it/du/it/Persona/PER0202241/Didattica), [Nicola Conci](https://scholar.google.it/citations?user=mR1GK28AAAAJ&hl=it)   
 > *Computer Vision Project, Spring 2023* 
 
+---
 
 With `ShadowMe` is possible to perform low-power 2D video-guided pose emulation from pose-free videos. Additionally, we provide a web interface which enable to perform the pose emulation of a video via web browser real-time. It works on smartphones and iPads!!
 
 ## Overview
-Our solution is highly efficient because it is based on the Mediapipe library, which offers a variety of tools that balance performance with available hardware resources. Using our pipeline, which leverages Mediapipe, we can easily track human poses in 2D videos and reproduce their motion in a virtual environment with real-time performance. Compared to high-resource models, our solution appears to be a reasonable alternative. We tested our solution on an iPad and were able to achieve real-time performance of the tracked motion in the virtual environment at 25/30 fps. The pre-compiled web interface has been implemented to minimize the overhead of the pipeline as much as possible.
-## Features
-The `poseExtraction` folder contains some of the experiments we have conducted, which have helped us gain a deeper understanding of the field. Meanwhile, the `ShadowMe` folder contains the implemented pipeline. The code has been documented thoroughly, and more detailed explanations can be found within the code itself.
+
+Our solution is highly efficient because it is based on the Mediapipe library, which offers a variety of tools that balance performance with available hardware resources. Using our pipeline, which leverages Mediapipe, we can easily track human poses in 2D videos and reproduce their motion in a virtual environment with real-time performance. Compared to high-resource models, our solution appears to be a reasonable alternative. We tested our solution on an iPad and were able to achieve real-time performance of the tracked motion in the virtual environment at 25/30 fps. The pre-compiled web interface has been implemented to minimize the overhead of the pipeline as much as possible. The landmarks, estimated with Mediapipe with the holistic setting, are fed to an inverse kinematic solver ([Kalidokit](https://github.com/yeemachine/kalidokit)) which outputs rig positioning and rotations. This information is smoothed on the temporal axis and then mapped onto a 3D VRM model through Three.js, which also renders the scene in the browser window.
+## Structure and features of the repository
+
+Folders:
+
++ `ShadowMe`: the `ShadowMe` folder contains the implemented pipeline proposed in the report [here](https://drive.google.com/file/d/1gKofOmoEIEHP3fCCUfxvfmKZdTAw6TfP). The code has been documented thoroughly, and more detailed explanations can be found within the code itself.
+
++ `poseExtraction`: The `poseExtraction` folder contains some of the experiments we have conducted, which have helped us gain a deeper understanding of the field. We report some of the experiments we conducted in attempting to extract the pose rotations and enable rendering in Blender. We encountered problems in converting and producing the BVH file.
+
 ## Installation
+
 In order to test `ShadowMe`, it is necessary to install the dependencies and execute a few lines of code on the bash.
-### Install the Dependencies
 
-To install the necessary dependencies, download the requirements listed in the `./requirements.txt` file by executing the following command.
+### Requirements
 
-```bash
-pip install -r requirements.txt
-```
+To install the necessary dependencies, download the requirements listed below:
+
+* Node.js (version 19.8.1 was used for development)
+    * [download and installation](https://nodejs.org/en/download)
+* npm (version 9.6.2 was used for development)
+    * [npm installation guide](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+* additional modules, which will be automatically downloaded during installation
 
 ### Usage
 
-To run `ShadowMe` on a 2D video, execute the following command.
+* Clone the repository
 ```bash
-./run video.mp4
+git clone https://github.com/r1cc4r2o/ShadowMe.git
 ```
-To run real-time `ShadowMe` on your camera, execute the following command.
+* Move to the root (`ShadowMe`) folder
+```bash
+cd $PATH/ShadowMe
+```
+* Once you installed the right [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) version, run `npm install`
+```bash
+npm install
+npm run dev
+```
 
-```bash
-./run
-```
+
+It would be possiple to run the pipeline on both:
+
++ To run `ShadowMe` on a 2D video, execute the following command.
+
++ To run real-time `ShadowMe` on your camera, execute the following command.
+
 
 ## Contributing
 
