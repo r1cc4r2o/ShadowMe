@@ -1,6 +1,11 @@
-How run the pose estimation, extract the landmarks and the 3D coords from the 2D video. The python script save a video with the landmarks and a dictionary with all the info for each frame (e.g. landmarks, confidence, rotation angle between the joints).
+## Description
 
-To run the script:
-```
-python landmarkEstim.py video_name.mp4
-```
++ bvh_skeleton: contains the sctipt to perform the conversion from skeleton and temporal coords of the joints to a BVH motion file. The script was created by [KevinLTT](https://github.com/KevinLTT/video2bvh).
+
++ blender: contains the script to render the animations in blender
+
++ angle3D, angle and jointRotations: contains few experiments we have done to extract the rotations and the angles
+
++ landmarkEstim and landmark: contains scripts to extract the landmark with [Mediapipe](https://developers.google.com/mediapipe)
+
++ utils_plot: contains the functions to plot the 3D animation of the skeleton with the joints extracted with Mediapipe. The script was created by [Kazuhito00](https://github.com/Kazuhito00/mediapipe-python-sample/blob/main/sample_pose.py).
