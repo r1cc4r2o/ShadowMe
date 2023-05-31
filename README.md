@@ -24,6 +24,8 @@ Folders:
 
 + `poseExtraction`: The `poseExtraction` folder contains some of the experiments we have conducted, which have helped us gain a deeper understanding of the field. We report some of the experiments we conducted in attempting to extract the pose rotations and enable rendering in Blender. We encountered problems in converting and producing the BVH file.
 
++ `humanMotionGeneration`: In the `humanMotionGeneration` folder we did some experiments with the current SoTA of human motion generation. However, currently it would be impossible to extend the pipeline with motion generation from textual prompts, due mainly to the computational complexity of the task.
+
 ## Installation
 
 In order to test `ShadowMe`, it is necessary to install the dependencies and execute a few lines of code on the bash.
