@@ -4,7 +4,7 @@
 ![pipeline](poseExtraction/img/pipeline.png)
 
 > [**Shadow Me: Low-power 2D Motion Emulation and 3D Renders**](https://drive.google.com/file/d/1gKofOmoEIEHP3fCCUfxvfmKZdTAw6TfP),            
-> [Marco Garosi](https://www.instagram.com/marco_garosi/), [Riccardo Tedoldi](https://www.instagram.com/riccardotedoldi/)
+> [Marco Garosi](https://www.linkedin.com/in/marco-garosi/), [Riccardo Tedoldi](https://www.instagram.com/riccardotedoldi/)
 >
 > Supervisor: [Giulia Martinelli](https://www4.unitn.it/du/it/Persona/PER0202241/Didattica), [Nicola Conci](https://scholar.google.it/citations?user=mR1GK28AAAAJ&hl=it)   
 > *Computer Vision Project, Spring 2023* 
@@ -56,8 +56,10 @@ npm install
 npm run dev
 ```
 
+A URL will appear on the terminal. Visit that URL to load the Web app and use the software.
 
-It would be possiple to run the pipeline on both:
+
+It would be possible to run the pipeline on both:
 
 + on a 2D single RGB video
 
@@ -70,7 +72,7 @@ We have made our implementation publicly available, and we welcome anyone who wo
 ### Contact
 If you have suggestions or ideas for further improvemets please contact us.
 - riccardo tedoldi: [@riccardotedoldi](https://www.instagram.com/riccardotedoldi/)
-- marco garosi: [@marcogarosi](https://www.instagram.com/marco_garosi/)
+- marco garosi: [@marcogarosi](https://www.linkedin.com/in/marco-garosi/)
 
 Also, if you find any bugs or issues, please let us know. We are happy to fix them!
 

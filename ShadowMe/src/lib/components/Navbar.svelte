@@ -22,7 +22,7 @@
             <span
                 class="self-center text-2xl font-semibold hidden md:block"
             >
-                Pose2Character
+                ShadowMe
             </span>
         </a>
 

@@ -28,6 +28,7 @@ npm install
 npm run dev
 ```
 
+A URL will appear on the terminal. Visit that URL to load the Web app and use the software.
 
 It would be possiple to run the pipeline on both:
 
