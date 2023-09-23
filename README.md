@@ -1,6 +1,7 @@
 # ShadowMe
 ### Pipeline
 ---
+![sample](poseExtraction/img/demo.gif)
 ![pipeline](poseExtraction/img/pipeline.png)
 
 > [**Shadow Me: Low-power 2D Motion Emulation and 3D Renders**](https://drive.google.com/file/d/1gKofOmoEIEHP3fCCUfxvfmKZdTAw6TfP),            
