@@ -1,7 +1,4 @@
 # ShadowMe
-<p align="center">
- <img src="poseExtraction/img/demo.gif" width="105%">
-</p>
 
 ### Pipeline
 ---
@@ -17,6 +14,10 @@
 ---
 
 With `ShadowMe` is possible to perform low-power 2D video-guided pose emulation from pose-free videos. Additionally, we provide a web interface which enable to perform the pose emulation of a video via web browser real-time. It works on smartphones and iPads!!
+
+<p align="center">
+ <img src="poseExtraction/img/demo.gif" width="100%">
+</p>
 
 ## Overview
 
