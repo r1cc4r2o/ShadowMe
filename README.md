@@ -1,7 +1,10 @@
 # ShadowMe
+<p align="center">
+ <img src="poseExtraction/img/demo.gif" width="105%">
+</p>
+
 ### Pipeline
 ---
-![sample](poseExtraction/img/demo.gif)
 ![pipeline](poseExtraction/img/pipeline.png)
 
 > [**Shadow Me: Low-power 2D Motion Emulation and 3D Renders**](https://drive.google.com/file/d/1gKofOmoEIEHP3fCCUfxvfmKZdTAw6TfP),            
@@ -9,6 +12,7 @@
 >
 > Supervisor: [Giulia Martinelli](https://www4.unitn.it/du/it/Persona/PER0202241/Didattica), [Nicola Conci](https://scholar.google.it/citations?user=mR1GK28AAAAJ&hl=it)   
 > *Computer Vision Project, Spring 2023* 
+
 
 ---
 
